@@ -33,7 +33,7 @@ export default async function ContactAPI(req, res) {
     console.log("sending mail");
     const mail = await transporter.sendMail({
       from: User,
-      to: "1887she@gmail.com", //"info@gocredit.ch",
+      to: "info@gocredit.ch",
       subject: `ETAPE 1 | Demande d'informations (Acquisition Crédit) ${name}`,
       html: `
         <p>amount: ${amount}</p>
