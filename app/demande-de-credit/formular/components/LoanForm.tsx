@@ -6,7 +6,7 @@ import {
   FormItem,
   FormControl,
   FormDescription,
-} from "@/app/components/form";
+} from "./app/components/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   useForm,
@@ -15,13 +15,6 @@ import {
   Path,
   useFormContext,
 } from "react-hook-form";
-import {
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-} from "@/app/components/select";
-import { Checkbox } from "@/app/components/checkbox";
 import { number, z } from "zod";
 
 enum LoanDuration {
@@ -63,7 +56,7 @@ const ZLoanForm = z.object({
   email: z.string().min(4, { message: "l'e-mail est requis" }).email(),
   informations_juridiques: z.literal<boolean>(true),
   acceptationCGU: z.literal<boolean>(true),
-  acceptationConsultation: z.literal<boolean>(true),
+  acceptationConsultation: z.literal<boolean>(true || false),
 });
 
 type TLoanForm = z.infer<typeof ZLoanForm>;
