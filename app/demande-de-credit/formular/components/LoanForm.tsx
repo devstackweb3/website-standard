@@ -53,7 +53,7 @@ function LoanForm() {
             defaultValues: {
                 duree_en_mois: LoanDuration.SIX
             },
-            resolver: zodResolver(ZLoanForm)
+            resolver: zodResolver(ZLoanForm) //option resolver à quoi sert il exactement
         }
 
         )
@@ -91,7 +91,7 @@ function LoanForm() {
 
         <Form {...form}>
 
-                <form onSubmit={form.handleSubmit(onSubmit)} className="xs:w-full sm:w-full w-[32rem]">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="xs:w-full sm:w-full sm:px-4 w-[32rem] grid justify-center bg-green-100 py-4 rounded-2xl">
                     
                     <div className='flex flex-wrap -mx-3'>
                         <div className="min-w-1/2 px-3 mb-6 md:mb-0">
@@ -149,7 +149,7 @@ function LoanForm() {
                             <span className='text-gray-700 text-xs font-light mb-2 px-3 max-w-[24rem]'>Je souhaite bénéficier <span className='font-semibold'>gratuitement</span> de l'optimisation financière que me propose Go Credit (cette prestation permet à/aux bénéficiaire d'économiser en moyenne une somme de 1'600CHF/année).</span>
                         </div>
                     </div>
-                    <button type="submit" className="shadow bg-gradient-to-br from-green-300 to-emerald-500 hover:bg-gradient-to-br hover:from-green-300 hover:to-emerald-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
+                    <button type="submit" className="w-fit shadow bg-gradient-to-br from-green-300 to-emerald-500 hover:bg-gradient-to-br hover:from-green-300 hover:to-emerald-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
                         Envoyer
                     </button>
                 

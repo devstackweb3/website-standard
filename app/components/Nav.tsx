@@ -28,7 +28,7 @@ const NavBar = () => {
     <nav className="bg-white border-gray-200 dark:bg-gray-900">
         <div className="max-w-screen-xl flex flex-wrap lg:items-center justify-between mx-auto p-4">
             <Link href="/" className="flex lg:items-center">
-                <img src="@/app/public/logo.png" className="h-8 mr-3" alt="Go Credit Logo" />
+                <img src="@/app/public/logo.svg" className="h-8 mr-3" alt="Go Credit Logo" />
                 <span className="lg:self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Go Credit</span>
             </Link>
             
