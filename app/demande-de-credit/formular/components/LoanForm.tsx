@@ -341,7 +341,6 @@ const ControlledInput = <T extends FieldValues>({
               }
               {...register(name, {
                 setValueAs: (v) => {
-                  console.log(props);
                   if (props.type === "number") return parseFloat(v);
                   if (props.type === "date") return new Date(v);
                   return v;
