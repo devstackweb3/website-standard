@@ -17,8 +17,6 @@ export default async function ContactAPI(req, res) {
       acceptationCGU: CGU,
       acceptationConsultation: consultation,
     } = req.body;
-    console.log(req.body);
-    console.log(amount);
     const User = process.env.USER_MAIL;
     const Pass = process.env.APP_PASSWORD;
 
@@ -35,14 +33,14 @@ export default async function ContactAPI(req, res) {
     console.log("sending mail");
     const mail = await transporter.sendMail({
       from: User,
-      to: "1887she@gmail.com", //'info@gocredit.ch',
+      to: "1887she@gmail.com", //"info@gocredit.ch",
       subject: `ETAPE 1 | Demande d'informations (Acquisition Crédit) ${name}`,
       html: `
         <p>amount: ${amount}</p>
         <p>time: ${time} </p>
         <p>surname: ${surname} </p>
         <p>name: ${name} </p>
-        <p>birth: ${birth} </p>
+        <p>birth: ${new Date(birth).toISOString().split("T")[0]} </p>
         <p>road: ${road} </p>
         <p>number: ${number} </p>
         <p>NIP: ${NIP} </p>

@@ -13,8 +13,7 @@ import {
   FieldValues,
   Control,
   Path,
-  UseFormRegisterReturn,
-  SubmitHandler,
+  useFormContext,
 } from "react-hook-form";
 import {
   Select,
@@ -23,7 +22,7 @@ import {
   SelectContent,
 } from "@/app/components/select";
 import { Checkbox } from "@/app/components/checkbox";
-import { z } from "zod";
+import { number, z } from "zod";
 
 enum LoanDuration {
   SIX = "6",
@@ -51,14 +50,15 @@ const ZLoanForm = z.object({
     .min(100, { message: "le seuil accordé est de 100 CHF" })
     .max(400000, {
       message: "La limite de crédit privé accordée est de 400'000 CHF",
-    }),
+    })
+    .nullable(),
   duree_en_mois: z.nativeEnum(LoanDuration),
   prenom: z.string().min(3, { message: "Prénom est requis" }).max(15),
   nom: z.string().min(3, { message: "Nom est requis" }).max(15),
-  naissance: z.date(),
+  naissance: z.coerce.date().nullable(),
   rue: z.string().min(6).max(20),
-  numero: z.number(),
-  codepostal: z.number(),
+  numero: z.string().nullable(),
+  codepostal: z.number().nullable(),
   localite: z.string().min(3).max(15),
   email: z.string().min(4, { message: "l'e-mail est requis" }).email(),
   informations_juridiques: z.literal<boolean>(true),
@@ -69,21 +69,31 @@ const ZLoanForm = z.object({
 type TLoanForm = z.infer<typeof ZLoanForm>;
 
 function LoanForm() {
-  const { handleSubmit, control } = useForm<TLoanForm>({
+  const form = useForm<TLoanForm>({
     defaultValues: {
       duree_en_mois: LoanDuration.SIX,
+      informations_juridiques: false,
+      acceptationCGU: false,
+      acceptationConsultation: false,
+      montant_du_credit: 0,
+      prenom: "",
+      nom: "",
+      naissance: null,
+      rue: "",
+      numero: null,
+      codepostal: null,
+      localite: "",
+      email: "",
     },
     resolver: zodResolver(ZLoanForm),
   });
-  const form = useForm<TLoanForm>();
-  console.log(form.watch());
+  React.useEffect(() => {
+    const errors = form.formState.errors;
+    console.log(errors);
+  }, [form.formState]);
 
   //trigger data on submit formular
   const onSubmit = async (data: TLoanForm) => {
-    console.log("on submit");
-    console.log(form);
-    // event.preventDefault();
-
     const response = await fetch("/api/contact", {
       method: "POST",
       headers: {
@@ -112,12 +122,11 @@ function LoanForm() {
             <div className="min-w-1/2 px-3 mb-6 md:mb-0">
               {/* modele a reproduire */}
               <ControlledInput<TLoanForm>
-                control={form.control}
                 name="montant_du_credit"
                 label="Montant"
-                type="number"
                 step={100}
                 placeholder="20'000 CHF"
+                type="number"
                 className="font-light italic bg-green-50 p-1"
               />
             </div>
@@ -133,7 +142,6 @@ function LoanForm() {
           <div className="flex flex-wrap -mx-3">
             <div className="min-w-1/2 px-3 mb-6 md:mb-0">
               <ControlledInput<TLoanForm>
-                control={form.control}
                 name="prenom"
                 label="Prenom"
                 placeholder="Marc"
@@ -142,7 +150,6 @@ function LoanForm() {
             </div>
             <div className="w-1/2 px-3 mb-6 md:mb-0">
               <ControlledInput<TLoanForm>
-                control={form.control}
                 name="nom"
                 label="Nom"
                 placeholder="Schmidt"
@@ -151,7 +158,6 @@ function LoanForm() {
             </div>
           </div>
           <ControlledInput<TLoanForm>
-            control={form.control}
             name="naissance"
             label="Date de Naissance"
             type="date"
@@ -160,7 +166,6 @@ function LoanForm() {
           <div className="flex flex-wrap -mx-3">
             <div className="min-w-1/2 px-3 mb-6 md:mb-0">
               <ControlledInput<TLoanForm>
-                control={form.control}
                 name="rue"
                 label="Rue"
                 placeholder="Avenue des Acacias"
@@ -169,7 +174,6 @@ function LoanForm() {
             </div>
             <div className="w-1/2 px-3 mb-6 md:mb-0">
               <ControlledInput<TLoanForm>
-                control={form.control}
                 name="numero"
                 label="Numéro"
                 placeholder="15"
@@ -181,7 +185,6 @@ function LoanForm() {
           <div className="flex flex-wrap -mx-3">
             <div className="min-w-1/2 px-3 mb-6 md:mb-0">
               <ControlledInput<TLoanForm>
-                control={form.control}
                 name="codepostal"
                 label="Code Postal"
                 placeholder="1001"
@@ -191,7 +194,6 @@ function LoanForm() {
             </div>
             <div className="w-1/2 px-3 mb-6 md:mb-0">
               <ControlledInput<TLoanForm>
-                control={form.control}
                 name="localite"
                 label="Localité"
                 placeholder="Lausanne"
@@ -201,7 +203,6 @@ function LoanForm() {
           </div>
 
           <ControlledInput<TLoanForm>
-            control={form.control}
             name="email"
             label="Email"
             placeholder="marcschmidt@gmail.com"
@@ -267,7 +268,6 @@ export default LoanForm;
 
 // a dégager
 type ControlledInputProps<T extends FieldValues> = {
-  control: Control<T>;
   name: Path<T>;
   label?: string;
 } & React.DetailedHTMLProps<
@@ -316,14 +316,13 @@ type ControlledInputProps<T extends FieldValues> = {
 //   );
 // };
 const ControlledInput = <T extends FieldValues>({
-  control,
   name,
   label,
   ...props
 }: ControlledInputProps<T>) => {
+  const { register } = useFormContext();
   return (
     <FormField
-      control={control}
       name={name}
       render={({ field, fieldState }) => (
         <FormItem>
@@ -335,8 +334,19 @@ const ControlledInput = <T extends FieldValues>({
             ) : null}
             <input
               className="bg-green-50 rounded-md"
-              value={field.value}
-              onChange={field.onChange}
+              value={
+                props.type === "date"
+                  ? new Date(field.value).toISOString().split("T")[0]
+                  : field.value
+              }
+              {...register(name, {
+                setValueAs: (v) => {
+                  console.log(props);
+                  if (props.type === "number") return parseFloat(v);
+                  if (props.type === "date") return new Date(v);
+                  return v;
+                },
+              })}
               {...props}
             />
           </div>
