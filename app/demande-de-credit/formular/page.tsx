@@ -2,7 +2,7 @@
 import React, { useRef } from 'react'
 import free from '@/app/public/free.svg'
 import time from '@/app/public/time.svg'
-
+import conditions from '@/app/public/conditions.svg'
 import step from '@/app/public/Step.svg'
 
 import LoanForm from './components/LoanForm';
@@ -36,7 +36,7 @@ const Formular = () => {
                             </div>
                             <div className='grid justify-center text-center'>
                                 <div className='grid bg-gradient-to-br from-green-300 via-30% to-emerald-500 to-90% xs:w-16 xs:h-16 w-24 h-24 rounded-md place-content-center'>
-                                    <img className='xs:h-12 xs:w-12 h-20 w-20 self-center' src="@/app/public/free.svg" alt="free" />
+                                    <img className='xs:h-12 xs:w-12 h-20 w-20 self-center' src={conditions.src} alt="free" />
                                 </div>
                                 <h2 className='font-semibold'>Libre</h2>
                             </div>
