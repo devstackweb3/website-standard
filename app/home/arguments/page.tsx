@@ -2,7 +2,7 @@ import React from 'react'
 
 const ArgumentSection = () => {
   return (
-<section className="m-4 mb-8 md:m-8 dark:bg-gray-800 dark:text-gray-100">
+<div className="m-4 mb-8 md:m-8 dark:bg-gray-800 dark:text-gray-100">
 	<div className="container mx-auto p-4 my-6 space-y-2 text-center">
 		<h2 className="text-5xl font-bold">Conçu pour vous simplifier l'accès</h2>
 		<p className="dark:text-gray-400 sm:pt-2 pt-4">Gagnez en clareté quant aux risques & conditions d'engagement</p>
@@ -37,7 +37,7 @@ const ArgumentSection = () => {
 		</div>
 		
 	</div>
-</section>
+</div>
   )
 }
 

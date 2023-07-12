@@ -24,25 +24,25 @@ const Formular = () => {
                         <div className='grid sm:grid-cols-2 grid-cols-4 xs:w-[12rem] xs:h-[12rem] xxs:w-[16rem] xxs:h-[16rem] my-4'>
                             <div className='grid justify-center text-center'>
                                 <div className='grid bg-gradient-to-br from-green-300 via-30% to-emerald-500 to-90% xs:w-16 xs:h-16 w-24 h-24 rounded-md place-content-center'>
-                                    <img className='sm:h-8 sm:w-8 h-16 w-16 self-center' src={free.src} alt="free" />
+                                    <img className='xs:h-12 xs:w-12 h-20 w-20 self-center' src={free.src} alt="free" />
                                 </div>
                                 <h2 className='font-semibold'>Gratuit</h2>
                             </div>
                             <div className='grid justify-center text-center'>
                                 <div className='grid bg-gradient-to-br from-green-300 via-30% to-emerald-500 to-90% xs:w-16 xs:h-16 w-24 h-24 rounded-md place-content-center'>
-                                    <img className='sm:h-8 sm:w-8 h-16 w-16 self-center' src={time.src} alt="free" />
+                                    <img className='xs:h-12 xs:w-12 h-20 w-20 self-center' src={time.src} alt="free" />
                                 </div>
                                 <h2 className='font-semibold'>24h</h2>
                             </div>
                             <div className='grid justify-center text-center'>
                                 <div className='grid bg-gradient-to-br from-green-300 via-30% to-emerald-500 to-90% xs:w-16 xs:h-16 w-24 h-24 rounded-md place-content-center'>
-                                    <img className='sm:h-8 sm:w-8 h-16 w-16 self-center' src="@/app/public/free.svg" alt="free" />
+                                    <img className='xs:h-12 xs:w-12 h-20 w-20 self-center' src="@/app/public/free.svg" alt="free" />
                                 </div>
                                 <h2 className='font-semibold'>Libre</h2>
                             </div>
                             <div className='grid justify-center text-center'>
                                 <div className='grid bg-gradient-to-br from-green-300 via-30% to-emerald-500 to-90% xs:w-16 xs:h-16 w-24 h-24 rounded-md place-content-center'>
-                                    <img className='sm:h-8 sm:w-8 h-16 w-16 self-center' src={step.src} alt="free" />
+                                    <img className='xs:h-12 xs:w-12 h-20 w-20 self-center' src={step.src} alt="free" />
                                 </div>
                                 <h2 className='font-semibold'>1 Etape</h2>
                             </div>

@@ -6,7 +6,7 @@ import {
   FormItem,
   FormControl,
   FormDescription,
-} from "./app/components/form";
+} from "@/app/components/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   useForm,
@@ -49,14 +49,14 @@ const ZLoanForm = z.object({
   prenom: z.string().min(3, { message: "Prénom est requis" }).max(15),
   nom: z.string().min(3, { message: "Nom est requis" }).max(15),
   naissance: z.coerce.date().nullable(),
-  rue: z.string().min(6).max(20),
+  rue: z.string().min(6).max(30),
   numero: z.string().nullable(),
   codepostal: z.number().nullable(),
   localite: z.string().min(3).max(15),
   email: z.string().min(4, { message: "l'e-mail est requis" }).email(),
   informations_juridiques: z.literal<boolean>(true),
   acceptationCGU: z.literal<boolean>(true),
-  acceptationConsultation: z.literal<boolean>(true || false),
+  acceptationConsultation: z.literal<boolean>(false || true),
 });
 
 type TLoanForm = z.infer<typeof ZLoanForm>;
@@ -109,7 +109,7 @@ function LoanForm() {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="xs:w-full sm:w-full w-[32rem]"
+          className="xs:w-full sm:w-full w-[32rem] grid justify-center bg-green-100 rounded-2xl p-4"
         >
           <div className="flex flex-wrap -mx-3">
             <div className="min-w-1/2 px-3 mb-6 md:mb-0">
@@ -245,12 +245,11 @@ function LoanForm() {
               </span>
             </div>
           </div>
-          <button
-            type="submit"
-            className="shadow bg-gradient-to-br from-green-300 to-emerald-500 hover:bg-gradient-to-br hover:from-green-300 hover:to-emerald-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-          >
+          <div className="grid justify-center">
+          <button type="submit" className="w-fit shadow bg-gradient-to-br from-green-300 to-emerald-500 hover:bg-gradient-to-br hover:from-green-300 hover:to-emerald-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
             Envoyer
           </button>
+          </div>
         </form>
       </Form>
     </div>

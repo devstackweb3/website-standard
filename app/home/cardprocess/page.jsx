@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import ask from '@/app/public/ask.jpg'
 import formular from '@/app/public/formular.jpg'
 import validation from '@/app/public/validation.jpg'
+import contract from '@/app/public/contract.jpg'
 
 //import creditDelivery from '@/public/creditdelivery.png'
 
@@ -24,7 +25,7 @@ const CardPreviewSection = () => {
         }
     }
 
-    const cardImages = [ask.src, formular.src, validation.src]
+    const cardImages = [ask.src, formular.src, validation.src, contract.src]
 
     const cardSubtitles = [
         'Transmission Formulaire',
