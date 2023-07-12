@@ -3,6 +3,7 @@ import ask from '@/app/public/ask.png'
 import info from '@/app/public/info.png'
 import validation from '@/app/public/validation.png'
 import contract from '@/app/public/contract.png'
+import Image from 'next/image'
 
 const ProcessusSection = () => {
   return (
@@ -12,7 +13,7 @@ const ProcessusSection = () => {
 		<div className="divide-y divide-gray-700">
 			<div className="grid justify-center grid-cols-4 p-8 mx-auto space-y-8 lg:space-y-0">
 				<div className="flex items-center justify-center sm:col-span-full md:col-span-full">
-					<img className='h-28 w-28 self-center' src={ask.src} alt="ask" />
+					<Image className='self-center' src={ask.src} alt="ask" width={112} height={112} />
 				</div>
 				<div className="flex flex-col justify-center max-w-2xl text-center col-span-full xl:col-span-3 lg:col-span-3 lg:text-left xl:text-left">
 					<span className="text-xs tracki uppercase dark:text-violet-400">Etape 1 - Transmission E-Formulaire</span>
@@ -22,7 +23,7 @@ const ProcessusSection = () => {
 			</div>
 			<div className="grid justify-center grid-cols-4 p-8 mx-auto space-y-8 lg:space-y-0">
 				<div className="flex items-center justify-center sm:col-span-full md:col-span-full">
-					<img className='h-28 w-28 self-center' src={info.src} alt="info" />
+					<Image className=' self-center' src={info.src} alt="info" width={112} height={112} />
 				</div>
 				<div className="flex flex-col justify-center max-w-2xl text-center col-span-full xl:col-span-3 lg:col-span-3 lg:text-left xl:text-left">
 					<span className="text-xs tracki uppercase dark:text-violet-400">Etape 2 - Réponse en 24h</span>
@@ -32,7 +33,7 @@ const ProcessusSection = () => {
 			</div>
 			<div className="grid justify-center grid-cols-4 p-8 mx-auto space-y-8 lg:space-y-0">
 				<div className="flex items-center justify-center sm:col-span-full md:col-span-full">
-					<img className='h-28 w-28 self-center' src={validation.src} alt="validation" />
+					<img className='self-center' src={validation.src} alt="validation" width={112} height={112} />
 				</div>
 				<div className="flex flex-col justify-center max-w-2xl text-center col-span-full xl:col-span-3 lg:col-span-3 lg:text-left xl:text-left">
 					<span className="text-xs tracki uppercase dark:text-violet-400">Etape 3 - Validation Prise de Crédit</span>
@@ -42,7 +43,7 @@ const ProcessusSection = () => {
 			</div>
 			<div className="grid justify-center grid-cols-4 p-8 mx-auto space-y-8 lg:space-y-0">
 				<div className="flex items-center justify-center sm:col-span-full md:col-span-full">
-					<img className='h-28 w-28 self-center' src={contract.src} alt="contract" />
+					<img className='self-center' src={contract.src} alt="contract" width={112} height={112}/>
 				</div>
 				<div className="flex flex-col justify-center max-w-2xl text-center col-span-full xl:col-span-3 lg:col-span-3 lg:text-left xl:text-left">
 					<span className="text-xs tracki uppercase dark:text-violet-400">Etape 4 - Délivrance Contrat de Crédit</span>
