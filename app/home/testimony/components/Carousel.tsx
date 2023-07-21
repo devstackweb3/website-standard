@@ -2,9 +2,13 @@
 import { useEffect, useState } from 'react'
 import { ChevronLeft, ChevronRight } from 'react-feather'
 
+type Props = {
+  items: {href: string, title: string, text:string}[],
+  autoSlide?: boolean,
+  autoSlideInterval?: number
+}
 
-
-export default function Carousel({items, autoSlide = false, autoSlideInterval = 3000,}) {
+export default function Carousel({items, autoSlide = false, autoSlideInterval = 3000}: Props) {
   const [curr, setCurr] = useState(0)
 
   const prev = () => setCurr((curr) => (curr === 0 ? items.length - 1 : curr - 1))
@@ -23,7 +27,7 @@ export default function Carousel({items, autoSlide = false, autoSlideInterval = 
 
 
       {items.map(s => (
-          <div className='min-w-full min-h-full relative'>
+          <div key={s.href} className='min-w-full min-h-full relative'>
             <div className='absolute bg-gray-900/50 inset-0 grid grid-cols-1 place-content-center text-white'>
               <span className='text-white text-center font-semibold'>{s.title}</span>
               <span className='text-center'>{s.text}</span>
@@ -46,8 +50,9 @@ export default function Carousel({items, autoSlide = false, autoSlideInterval = 
 
         <div className='absolute bottom-4 right-0 left-0'>
           <div className='flex items-center justify-center gap-2'>
-            {items.map((_, i) => (
+            {items.map((item, i) => (
               <div
+                key={item.href}
                 className={`
                 transition-all w-3 h-3 bg-white rounded-full ${curr === i ? "p-2" : "bg-opacity-50"}`}/>
             ))}
