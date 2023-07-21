@@ -14,7 +14,7 @@ const HeroSection = () => {
           </p>
           <div className="flex flex-wrap w-full items-center sm:items-center sm:justify-center sm:space-y-0 sm:space-x-4 lg:justify-start">
             <a rel="noopener noreferrer" href="#" className="px-8 py-3 text-lg font-semibold rounded dark:bg-violet-400 dark:text-gray-900">Découvrir</a>
-            <a rel="noopener noreferrer" href="#" className="px-8 py-3 text-lg font-semibold border rounded dark:border-gray-100">Demande de Crédit</a>
+            <a rel="noopener noreferrer" href="/demande-de-credit" className="px-8 py-3 text-lg font-semibold border rounded dark:border-gray-100">Demande de Crédit</a>
           </div>
         </div>
         <div className="sm:invisible items-center justify-center md:p-6 md:mt-8 lg:mt-0 h-72 md:h-80 lg:h-96 xl:h-112 2xl:h-128">
