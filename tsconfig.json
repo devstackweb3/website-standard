@@ -24,6 +24,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/_document.jsx", "app/home/cardprocess/page.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/_document.jsx", "app/home/cardprocess/page.jsx", "app/home/testimony/components/Carousel.jsx"],
   "exclude": ["node_modules"]
 }

@@ -56,7 +56,7 @@ const ZLoanForm = z.object({
   email: z.string().min(4, { message: "l'e-mail est requis" }).email(),
   informations_juridiques: z.literal<boolean>(true),
   acceptationCGU: z.literal<boolean>(true),
-  acceptationConsultation: z.literal<boolean>(false || true),
+  acceptationConsultation: z.boolean(),
 });
 
 type TLoanForm = z.infer<typeof ZLoanForm>;
