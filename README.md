@@ -1,16 +1,13 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Website Standard 
 
-First, run the development server:
+REACT NEXTJS
+Formular JS (API Call) 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+**Duration Time :** 1 month
+
+## Localhost
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
